@@ -54,7 +54,6 @@ function calculator(e) {
         vals.push(e[i].value);
     }
     test = new shift(vals);
-    // addValues('closeReport',value)
 }
 calculator(document.calculator)
 function shift(vals) {
@@ -76,3 +75,5 @@ function shift(vals) {
     this.netTips = vals[15];
     return this;
 }
+
+// addValues('closeReport',vals)
