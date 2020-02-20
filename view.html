@@ -16,21 +16,21 @@
             <div class="row form-group">
                 <div class=" col">
                     <label>Name</label>
-                    <input name="name" type="text" class="form-control" placeholder="Name">
+                    <input required name="name" type="text" class="form-control" placeholder="Name">
                 </div>
                 <div class="col">
                     <label>Station</label>
-                    <input name="station" type="number" class="form-control" placeholder="Station" min="0" max="13">
+                    <input required name="station" type="number" class="form-control" placeholder="Station" min="0" max="13">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
                     <label>Date</label>
-                    <input name="date" type="date" class="form-control" placeholder="Date">
+                    <input required name="date" type="date" class="form-control" placeholder="Date">
                 </div>
                 <div class="col">
                     <label>Shift</label>
-                    <select name="shift" type='' class="custom-select" required>
+                    <select required name="shift" type='' class="custom-select" required>
                         <option value="0">AM</option>
                         <option value="1">PM</option>
                     </select>
@@ -39,13 +39,13 @@
             <div class="row form-group">
                 <div class="col">
                     <label>Tip Charge Sales</label>
-                    <input name="tipCharge" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
+                    <input required name="tipCharge" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
                     <label>Charge Tips</label>
-                    <input name="chargeTip" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
+                    <input required name="chargeTip" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
                 </div>
                 <div class="col">
                     <label>Charge Percentage</label>
@@ -55,13 +55,13 @@
             <div class="row form-group">
                 <div class="col">
                     <label>Other Sales</label>
-                    <input name="otherSales" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
+                    <input required name="otherSales" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
                     <label>Cash Tips</label>
-                    <input name="cashTips" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
+                    <input required name="cashTips" type="number" class="form-control" min="0" step=".01" placeholder="$0.00">
                 </div>
                 <div class="col">
                     <label>Cash Percentage</label>
@@ -87,7 +87,7 @@
             <div class="row form-group">
                 <div class="col">
                     <label>Bar Sales</label>
-                    <input name="barSales" type="number" class="form-control" min="0" step=".01"
+                    <input required name="barSales" type="number" class="form-control" min="0" step=".01"
                         placeholder="Bar sales">
                 </div>
                 <div class="col">
@@ -110,7 +110,7 @@
             <div class="row form-group">
                 <div class="col">
                     <label>Net Tips for shift</label>
-                    <input name="netTips" disabled class="form-control" placeholder="Net Tips for shift">
+                    <input name="netTips" disabled class="form-control" placeholder="$0.00">
                 </div>
             </div>
             <div class="row form-group">
