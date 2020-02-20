@@ -13,13 +13,12 @@ function fill(shiftNumber){
         report.otherSales.value = shift.otherSales;
         report.cashTips.value = shift.cashTips;
         report.barSales.value = shift.barSales;
-        calculator(document.calculator)
+        loadShift(report)
     }
 }
-fill(hash);
+window.onload = function(){fill(hash)};
 for (i = 0; i < report.length - 1; i++) {
     $(report[i]).attr('disabled', true)
-    report.bar
 }
 $('#return').on('click', function(e) {
     window.location.href = 'index.html';
