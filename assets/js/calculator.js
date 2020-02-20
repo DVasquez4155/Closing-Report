@@ -1,33 +1,51 @@
-$('#save').click(function(e) {
-    console.log(e)
+$('#save').click(function() {
+    var reportDone = true;
+    var e = document.calculator;
+    for (i = 0; i < e.length; i++) {
+        if($(e[i]).attr('required') == "required") {
+            if (e[i].value == "") {
+                reportDone = false;
+                break;
+            }
+        }
+    }
+    if (!reportDone) {
+        $('#notComplete').modal('show');
+        return;
+    }
     addValue('closeReport',currentShift)
     window.location.href = 'index.html';
 })
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+})
 var values = getValues('closeReport')
 $(document.calculator).on('change', function(e){
-    calculator(this)
+    loadShift(this)
 })
 var currentShift;
-function calculator(e) {
+function loadShift(e) {
     var vals = [];
     for (i = 0; i < e.length; i++) {
-        if(e[i].attributes.type != undefined && $(e[i]).attr('type') !='button') {
+        if($(e[i]).attr('required') == "required") {
             vals.push(e[i].value);
         }
     }
     currentShift = new shift(vals);
-    e.chargePercent.value = currentShift.chargePercent();
-    e.cashPercent.value = currentShift.cashPercent();
-    e.totalSales.value = currentShift.totalSales();
-    e.totalTips.value = currentShift.totalTips();
-    e.totalPercent.value = currentShift.totalPercent();
-    e.barTips.value = currentShift.barTips();
-    e.busserTips.value = currentShift.busserTips();
-    e.totalTipsPaid.value = currentShift.totalTipsPaid();
-    e.netTips.value = currentShift.netTips();
+    calculator(currentShift, e)
 }
-window.onload = function() {
-    calculator(document.calculator)
+function calculator(currentShift,form) {
+    form.chargePercent.value = formatter.format(currentShift.chargePercent());
+    form.cashPercent.value = formatter.format(currentShift.cashPercent());
+    form.totalSales.value = formatter.format(currentShift.totalSales());
+    form.totalTips.value = formatter.format(currentShift.totalTips());
+    form.totalPercent.value = formatter.format(currentShift.totalPercent());
+    form.barTips.value = formatter.format(currentShift.barTips());
+    form.busserTips.value = formatter.format(currentShift.busserTips());
+    form.totalTipsPaid.value = formatter.format(currentShift.totalTipsPaid());
+    form.netTips.value = formatter.format(currentShift.netTips());
 }
 
 function shift(vals) {
@@ -40,7 +58,7 @@ function shift(vals) {
     var chargeCalc = !isNaN(this.tipCharge) && !isNaN(this.chargeTip);
     this.chargePercent = function() {
         var percent = this.chargeTip/this.tipCharge;
-        if (chargeCalc) {
+        if (chargeCalc && !isNaN(percent)) {
             percent = Math.floor(percent*10000)/100
             return percent;
         }
@@ -52,8 +70,8 @@ function shift(vals) {
     this.cashTips = vals[7];
     var cashCalc = !isNaN(this.otherSales) && !isNaN(this.cashTips);
     this.cashPercent = function() {
-        if (cashCalc) {
-            var percent = this.cashTips/this.otherSales;
+        var percent = this.cashTips/this.otherSales;
+        if (cashCalc  && !isNaN(percent)) {
             percent = Math.floor(percent*10000)/100
             return percent;
         }
@@ -62,8 +80,9 @@ function shift(vals) {
         }
     }
     this.totalSales = function() {
-        if (!isNaN(this.tipCharge) && !isNaN(this.otherSales)) {
-            var totalSales = parseFloat(this.tipCharge) + parseFloat(this.otherSales)
+        var totalCalc = !isNaN(this.tipCharge) && !isNaN(this.otherSales);
+        var totalSales = parseFloat(this.tipCharge) + parseFloat(this.otherSales)
+        if (!isNaN(totalCalc) && totalSales) {
             totalSales = Math.floor(totalSales*100)/100;
             return totalSales;
         }
@@ -72,8 +91,9 @@ function shift(vals) {
         }
     }
     this.totalTips = function() {
-        if (!isNaN(this.cashTips) && !isNaN(this.chargeTip)) {
-            var totalTips = parseFloat(this.cashTips) + parseFloat(this.chargeTip)
+        var totalCalc = !isNaN(this.cashTips) && !isNaN(this.chargeTip);
+        var totalTips = parseFloat(this.cashTips) + parseFloat(this.chargeTip)
+        if (totalCalc && !isNaN(totalTips)) {
             totalTips = Math.floor(totalTips*100)/100;
             return totalTips;
         }
@@ -82,9 +102,10 @@ function shift(vals) {
         }
     }
     this.totalPercent = function() {
-        if (!isNaN(this.totalTips()) && !isNaN(this.totalSales())) {
-            var percent = this.totalTips() / this.totalSales()
-            percent = Math.floor(percent*100*100)/100
+        var totalCalc = !isNaN(this.totalTips()) && !isNaN(this.totalSales());
+        var percent = this.totalTips() / this.totalSales();
+        if (totalCalc && !isNaN(percent)) {
+            percent = Math.floor(percent*100*100)/100;
             return percent;
         }
         else {
