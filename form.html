@@ -95,8 +95,8 @@
                         data-target="#bar">
                         Bar Sales
                     </button>
-                    <input required name="barSales" type="number" class="form-control" min="0" step=".01"
-                        placeholder="Bar sales">
+                    <input disabled name="barSales" class="form-control"
+                        placeholder="$0.00">
                 </div>
                 <div class="col">
                     <label>Bar Tips</label>
@@ -144,17 +144,41 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form name="barCalculator" class='align-items-center'>
+                    <form name="bar" class='align-items-center'>
                         <div class="row form-group">
                             <div class="col">
-                                <label>...</label>
-                                <input name="..." type="number" class="form-control" placeholder="$0.00">
+                                <label>Liquor</label>
+                                <input name="liquor" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label>Beer Bottle</label>
+                                <input name="beerBtl" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label>Beer Keg</label>
+                                <input name="beerKeg" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label>Wine Corked ($1 for each Wine Bottle)</label>
+                                <input name="wineCorked" type="number" class="form-control" placeholder="0" min="0" step=".01">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col">
+                                <label>Wine Glass</label>
+                                <input name="wineGlass" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                    <button id='exitBarButton' type="button" class="btn btn-primary" data-dismiss="modal">Exit</button>
                 </div>
             </div>
         </div>
@@ -177,7 +201,8 @@
     <script src='https://dvasquez4155.github.io/api/localStorage.js'></script>
     <!-- <script src="https://kit.fontawesome.com/385ee6e559.js"></script> -->
     <!-- <script src='https://momentjs.com/downloads/moment.min.js'></script> -->
-    <script src='assets/js/calculator.js'></script>
+    <script src='assets/js/classes.js'></script>
+    <script src='assets/js/form.js'></script>
 </body>
 
 </html>
