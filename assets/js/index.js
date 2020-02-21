@@ -1,5 +1,5 @@
 $('#new').on('click', function() {
-    window.location.href = 'calculator.html';
+    window.location.href = 'form.html';
 });
 var values = getValues('closeReport');
 var cardList = $('#list')
@@ -9,7 +9,7 @@ $(values).each(function(i) {
         cardList.append(
             '<div class="card-header">' +
             '<button class="btn btn-link" data-toggle="collapse" data-target="#' + date.format('MMM_YYYY') + '">' +
-            date.format('MMMM') +
+            date.format('MMMM YYYY') +
             '</button>' +
             '</div>')
         .append(
@@ -22,6 +22,6 @@ $(values).each(function(i) {
     var list = document.createElement('li');
     $(list)
     .addClass('list-group-item')
-    .html('<a href="view.html#' + i + '">' + date.format('M/DD/YYYY') + "</a>")
+    .html('<a href="form.html#' + i + '">' + date.format('M/DD/YYYY') + "</a>")
     .appendTo($('#' + date.format('MMM_YYYY') + 'ul'));
 })
