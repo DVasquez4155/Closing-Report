@@ -1,5 +1,5 @@
 # Closing Report v1
-![Followers](https://img.shields.io/github/followers/DVasquez4155?style=social) ![License](https://img.shields.io/github/license/DVasquez4155/Closing-Report/v1) ![Language](https://img.shields.io/github/languages/top/DVasquez4155/Closing-Report/v1) ![Latest Commit](https://img.shields.io/github/last-commit/DVasquez4155/Closing-Report/v1)
+![Followers](https://img.shields.io/github/followers/DVasquez4155?style=social) ![License](https://img.shields.io/github/license/DVasquez4155/Closing-Report) ![Language](https://img.shields.io/github/languages/top/DVasquez4155/Closing-Report) ![Latest Commit](https://img.shields.io/github/last-commit/DVasquez4155/Closing-Report/v1)
 ## Table of Contents
 * [Credits](#Credits)
 * [Contributing](#Contributing)
