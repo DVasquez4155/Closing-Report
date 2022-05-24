@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href="assets/css/style.css">
+    <title>Template</title>
+</head>
+
+<body>
+    <div class="container">
+        <form name='totals' onsubmit="return false;">
+            <br>
+            <div class="row form-group">
+                <div class="col">
+                    <button id='new' class='btn form-control btn-primary'>Create new close report</button>
+                </div>
+                <div class="col">
+                    <button id='return' class='btn form-control btn-danger'>Return</button>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col">
+                    <select name="summary" class="form-control">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="period">Pay Period</option>
+                        <option value="monthly">Monthly</option>
+                        <!-- <option value="yearly">Yearly</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    <label>Total Summary</label>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" id="current">Current Shift</th>
+                                <th scope="col" id="previous">Previous Shift</th>
+                                <th scope="col" id="last">Two Shifts Ago</th>
+                                <th scope="col" id="total">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Net Charge Tips</th>
+                                <td><input name="chargeTip0" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="chargeTip1" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="chargeTip2" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="chargeTip3" class="form-control" disabled placeholder="$0.00"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Net Cash Tips</th>
+                                <td><input name="cashTip0" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="cashTip1" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="cashTip2" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="cashTip3" class="form-control" disabled placeholder="$0.00"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Net Total Tips</th>
+                                <td><input name="totalTip0" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="totalTip1" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="totalTip2" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="totalTip3" class="form-control" disabled placeholder="$0.00"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Net Tips Percentage</th>
+                                <td><input name="tipPercent0" class="form-control" disabled placeholder="0.00%"></td>
+                                <td><input name="tipPercent1" class="form-control" disabled placeholder="0.00%"></td>
+                                <td><input name="tipPercent2" class="form-control" disabled placeholder="0.00%"></td>
+                                <td><input name="tipPercent3" class="form-control" disabled placeholder="0.00%"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total Tips Paid Out</th>
+                                <td><input name="totalPaid0" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="totalPaid1" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="totalPaid2" class="form-control" disabled placeholder="$0.00"></td>
+                                <td><input name="totalPaid3" class="form-control" disabled placeholder="$0.00"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src='https://dvasquez4155.github.io/api/localStorage.js'></script>
+    <script src='https://momentjs.com/downloads/moment.min.js'></script>
+    <script src='assets/js/totals.js'></script>
+</body>
+
+</html>

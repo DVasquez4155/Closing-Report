@@ -1,6 +1,9 @@
 $('#new').on('click', function() {
     window.location.href = 'form.html';
 });
+$('#totals').on('click', function() {
+    window.location.href = 'totals.html';
+});
 var values = getValues('closeReport');
 var cardList = $('#list')
 $(values).each(function(i) {

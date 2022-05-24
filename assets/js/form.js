@@ -40,33 +40,50 @@ function loadShift(calc) {
         liquor : bar.liquor.value,
         beerBtl : bar.beerBtl.value,
         beerKeg : bar.beerKeg.value,
-        wineCorked : bar.wineCorked.value,
-        wineGlass : bar.wineGlass.value
+        // wineCorked : bar.wineCorked.value,
+        wine : bar.wine.value
     });
+    var date = [0,0,0];
+    date = calc.date.value.split("-")
+
+
     currentSales = new sales({
-        name :  calc.name.value,
-        station:  calc.station.value,
+        // name :  calc.name.value,
+        // station:  calc.station.value,
         date:  calc.date.value,
-        shift:  calc.shift.value,
+        
+        year: parseInt(date[0]),
+        month: parseInt(date[1]),
+        day: parseInt(date[2]),
+        shift:  parseInt(calc.shift.value),
         tipCharge:  calc.tipCharge.value,
+        // otherSales:  calc.otherSales.value,
         chargeTip:  calc.chargeTip.value,
-        otherSales:  calc.otherSales.value,
         cashTips:  calc.cashTips.value,
+        netTotalTips:  calc.chargeTip.value + calc.cashTips.value,
+        totalTipsPercent:  0,
+
+        totalTipsPaidOut:  calc.barTips.value + calc.busserTips.value + calc.hohTips.value + calc.hostTips.value,
+        
         bar:  currentBarSales
     })
     calculator(currentSales, calc)
 }
 function calculator(currentShift,form) {
-    form.chargePercent.value = percent.format(currentShift.chargePercent());
-    form.cashPercent.value = percent.format(currentShift.cashPercent());
-    form.totalSales.value = us.format(currentShift.totalSales());
+    console.log(currentShift)
+    // form.chargePercent.value = percent.format(currentShift.chargePercent());
+    // form.cashPercent.value = percent.format(currentShift.cashPercent());
+    // form.totalSales.value = us.format(currentShift.totalSales());
     form.totalTips.value = us.format(currentShift.totalTips());
     form.totalPercent.value = percent.format(currentShift.totalPercent());
     form.barSales.value = us.format(currentShift.bar.barSales());
     form.barTips.value = us.format(currentShift.barTips());
     form.busserTips.value = us.format(currentShift.busserTips());
+    form.hohTips.value = us.format(currentShift.hohTips());
+    form.hostTips.value = us.format(currentShift.hostTips());
     form.totalTipsPaid.value = us.format(currentShift.totalTipsPaid());
-    form.netTips.value = us.format(currentShift.netTips());
+    form.netChargeTips.value = us.format(currentShift.netTips()-currentShift.cashTips);
+    form.netCashTips.value = us.format(currentShift.cashTips);
 }
 
 $('#return').on('click', function(e) {
@@ -78,20 +95,21 @@ var bar = document.bar;
 var hash = parseInt(location.hash.substring(1));
 function fill(shiftNumber){
     var shift = values[shiftNumber];
-    report.name.value = shift.name;
-    report.station.value = shift.station;
+    console.log(shift)
+    // report.name.value = shift.name;
+    // report.station.value = shift.station;
     report.date.value = shift.date;
     report.shift.value = shift.shift;
     report.tipCharge.value = shift.tipCharge;
     report.chargeTip.value = shift.chargeTip;
-    report.otherSales.value = shift.otherSales;
+    // report.otherSales.value = shift.otherSales;
     report.cashTips.value = shift.cashTips;
     var reportedBarSales =  new barSales(shift.bar)
     bar.liquor.value = reportedBarSales.liquor;
     bar.beerBtl.value = reportedBarSales.beerBtl;
     bar.beerKeg.value = reportedBarSales.beerKeg;
-    bar.wineCorked.value = reportedBarSales.wineCorked;
-    bar.wineGlass.value = reportedBarSales.wineGlass;
+    // bar.wineCorked.value = reportedBarSales.wineCorked;
+    bar.wine.value = reportedBarSales.wine;
     loadShift(report)
 }
 window.onload = function(){
