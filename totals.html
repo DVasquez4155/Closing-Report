@@ -25,10 +25,11 @@
             <div class="row form-group">
                 <div class="col">
                     <select name="summary" class="form-control">
+                        <option value="daily">Daily</option>
                         <option value="weekly">Weekly</option>
                         <option value="period">Pay Period</option>
                         <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
+                        <!-- <option value="yearly">Yearly</option> -->
                     </select>
                 </div>
             </div>
@@ -39,9 +40,9 @@
                         <thead>
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col" id="current">Current Week</th>
-                                <th scope="col" id="previous">Last Week</th>
-                                <th scope="col" id="last">Two Weeks Ago</th>
+                                <th scope="col" id="current">Current Shift</th>
+                                <th scope="col" id="previous">Previous Shift</th>
+                                <th scope="col" id="last">Two Shifts Ago</th>
                                 <th scope="col" id="total">Total</th>
                             </tr>
                         </thead>

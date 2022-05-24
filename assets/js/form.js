@@ -41,13 +41,21 @@ function loadShift(calc) {
         beerBtl : bar.beerBtl.value,
         beerKeg : bar.beerKeg.value,
         // wineCorked : bar.wineCorked.value,
-        wineGlass : bar.wineGlass.value
+        wine : bar.wine.value
     });
+    var date = [0,0,0];
+    date = calc.date.value.split("-")
+
+
     currentSales = new sales({
-        name :  calc.name.value,
+        // name :  calc.name.value,
         // station:  calc.station.value,
         date:  calc.date.value,
-        shift:  calc.shift.value,
+        
+        year: parseInt(date[0]),
+        month: parseInt(date[1]),
+        day: parseInt(date[2]),
+        shift:  parseInt(calc.shift.value),
         tipCharge:  calc.tipCharge.value,
         chargeTip:  calc.chargeTip.value,
         // otherSales:  calc.otherSales.value,
@@ -57,6 +65,7 @@ function loadShift(calc) {
     calculator(currentSales, calc)
 }
 function calculator(currentShift,form) {
+    console.log(currentShift)
     // form.chargePercent.value = percent.format(currentShift.chargePercent());
     // form.cashPercent.value = percent.format(currentShift.cashPercent());
     // form.totalSales.value = us.format(currentShift.totalSales());
@@ -68,7 +77,7 @@ function calculator(currentShift,form) {
     form.hohTips.value = us.format(currentShift.hohTips());
     form.hostTips.value = us.format(currentShift.hostTips());
     form.totalTipsPaid.value = us.format(currentShift.totalTipsPaid());
-    form.netTips.value = us.format(currentShift.netTips()-currentShift.cashTips);
+    form.netChargeTips.value = us.format(currentShift.netTips()-currentShift.cashTips);
     form.netCashTips.value = us.format(currentShift.cashTips);
 }
 
@@ -95,7 +104,7 @@ function fill(shiftNumber){
     bar.beerBtl.value = reportedBarSales.beerBtl;
     bar.beerKeg.value = reportedBarSales.beerKeg;
     // bar.wineCorked.value = reportedBarSales.wineCorked;
-    bar.wineGlass.value = reportedBarSales.wineGlass;
+    bar.wine.value = reportedBarSales.wine;
     loadShift(report)
 }
 window.onload = function(){

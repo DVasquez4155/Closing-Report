@@ -11,8 +11,7 @@ class barSales {
         this.liquor = isCorrect(vals.liquor);
         this.beerBtl = isCorrect(vals.beerBtl);
         this.beerKeg = isCorrect(vals.beerKeg);
-        this.wineCorked = isCorrect(vals.wineCorked);
-        this.wineGlass = isCorrect(vals.wineGlass);
+        this.wine = isCorrect(vals.wine);
         return this;
     }
     barSales() {
@@ -21,21 +20,26 @@ class barSales {
         this.liquor + 
         this.beerBtl + 
         this.beerKeg + 
-        this.wineCorked + 
-        this.wineGlass;
+        this.wine;
         return total;
     }
 }
 class sales{
     constructor(vals) {
-        this.name = vals.name;
-        this.station = isCorrect(vals.station);
+        // this.name = vals.name;
+        // this.station = isCorrect(vals.station);
         this.date = vals.date;
+        this.year = vals.year;
+        this.month = vals.month;
+        this.day = vals.day;
         this.shift = vals.shift;
         this.tipCharge = isCorrect(vals.tipCharge);
         this.chargeTip = isCorrect(vals.chargeTip);
-        this.otherSales = isCorrect(vals.otherSales);
+        // this.otherSales = isCorrect(vals.otherSales);
         this.cashTips = isCorrect(vals.cashTips);
+        this.netChargeTips = isCorrect(vals.netChargeTips);
+        this.totalTipsPercent = isCorrect(vals.totalTipsPercent);
+        this.totalTipsPaidOut = isCorrect(vals.totalTipsPaidOut);
         this.bar = vals.bar;
     }
     barTips() {
@@ -48,7 +52,7 @@ class sales{
         return this.cashTips/this.otherSales;
     }
     totalSales() {
-        return this.tipCharge + this.otherSales;
+        return this.tipCharge;
     }
     totalTips() {
         return this.cashTips + this.chargeTip;

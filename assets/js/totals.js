@@ -5,11 +5,24 @@ $('#return').on('click', function() {
     window.location.href = 'index.html';
 });
 const timeRanges = {
-    weekly : ["Current Week", 'Last Week', "Two Weeks Ago"],
-    period : ["Current Period", 'Last Period', "Two Periods Ago"],
-    monthly : ["Current Month", 'Last Month', "Two Months Ago"],
-    yearly : ["Current Year", 'Last Year', "Two Years Ago"]
+    daily : ["Current Shift", 'Previous Shift', "Two Shifts Ago"],
+    weekly : ["Current Week", 'Previous Week', "Two Weeks Ago"],
+    period : ["Current Period", 'Previous Period', "Two Periods Ago"],
+    monthly : ["Current Month", 'Previous Month', "Two Months Ago"],
+    yearly : ["Current Year", 'Previous Year', "Two Years Ago"]
 }
+var values = getValues('closeReport');
+
+var totalChargeTip = 0;
+var totalCashTip = 0;
+var totalTipCharge = 0;
+
+values.forEach(element => {
+    console.log(element)
+    totalChargeTip += element.chargeTip;
+    totalCashTip += element.cashTips;
+    totalTipCharge += element.tipCharge;
+});
 
 const us = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -29,10 +42,35 @@ function loadSummary(form) {
     $('#previous').text(timeRanges[form.summary.value][1])
     $('#last').text(timeRanges[form.summary.value][2])
     $('#total').text(timeRanges[form.summary.value][3])
-    console.log(form.chargeTip3.value)
+
+    form.chargeTip0.value = us.format(0);
+    form.chargeTip1.value = us.format(0);
+    form.chargeTip2.value = us.format(0);
+    form.chargeTip3.value = us.format(totalChargeTip);
+
+    form.cashTip0.value = us.format(0);
+    form.cashTip1.value = us.format(0);
+    form.cashTip2.value = us.format(0);
+    form.cashTip3.value = us.format(totalCashTip);
+
+    form.totalTip0.value = us.format(0);
+    form.totalTip1.value = us.format(0);
+    form.totalTip2.value = us.format(0);
+    form.totalTip3.value = us.format(totalChargeTip + totalCashTip);
+
+    form.tipPercent0.value = percent.format(0);
+    form.tipPercent1.value = percent.format(0);
+    form.tipPercent2.value = percent.format(0);
+    form.tipPercent3.value = percent.format((totalChargeTip + totalCashTip)/totalTipCharge);
+    
+    form.totalPaid0.value = us.format(0);
+    form.totalPaid1.value = us.format(0);
+    form.totalPaid2.value = us.format(0);
+    form.totalPaid3.value = us.format(0);
+    
+    // console.log(form.chargeTip3.value)
 
 }
-var values = getValues('closeReport');
 // var cardList = $('#list')
 // $(values).each(function(i) {
 //     var date = moment(values[i].date);
