@@ -40,33 +40,36 @@ function loadShift(calc) {
         liquor : bar.liquor.value,
         beerBtl : bar.beerBtl.value,
         beerKeg : bar.beerKeg.value,
-        wineCorked : bar.wineCorked.value,
+        // wineCorked : bar.wineCorked.value,
         wineGlass : bar.wineGlass.value
     });
     currentSales = new sales({
         name :  calc.name.value,
-        station:  calc.station.value,
+        // station:  calc.station.value,
         date:  calc.date.value,
         shift:  calc.shift.value,
         tipCharge:  calc.tipCharge.value,
         chargeTip:  calc.chargeTip.value,
-        otherSales:  calc.otherSales.value,
+        // otherSales:  calc.otherSales.value,
         cashTips:  calc.cashTips.value,
         bar:  currentBarSales
     })
     calculator(currentSales, calc)
 }
 function calculator(currentShift,form) {
-    form.chargePercent.value = percent.format(currentShift.chargePercent());
-    form.cashPercent.value = percent.format(currentShift.cashPercent());
-    form.totalSales.value = us.format(currentShift.totalSales());
+    // form.chargePercent.value = percent.format(currentShift.chargePercent());
+    // form.cashPercent.value = percent.format(currentShift.cashPercent());
+    // form.totalSales.value = us.format(currentShift.totalSales());
     form.totalTips.value = us.format(currentShift.totalTips());
     form.totalPercent.value = percent.format(currentShift.totalPercent());
     form.barSales.value = us.format(currentShift.bar.barSales());
     form.barTips.value = us.format(currentShift.barTips());
     form.busserTips.value = us.format(currentShift.busserTips());
+    form.hohTips.value = us.format(currentShift.hohTips());
+    form.hostTips.value = us.format(currentShift.hostTips());
     form.totalTipsPaid.value = us.format(currentShift.totalTipsPaid());
-    form.netTips.value = us.format(currentShift.netTips());
+    form.netTips.value = us.format(currentShift.netTips()-currentShift.cashTips);
+    form.netCashTips.value = us.format(currentShift.cashTips);
 }
 
 $('#return').on('click', function(e) {
@@ -84,7 +87,7 @@ function fill(shiftNumber){
     report.shift.value = shift.shift;
     report.tipCharge.value = shift.tipCharge;
     report.chargeTip.value = shift.chargeTip;
-    report.otherSales.value = shift.otherSales;
+    // report.otherSales.value = shift.otherSales;
     report.cashTips.value = shift.cashTips;
     var reportedBarSales =  new barSales(shift.bar)
     bar.liquor.value = reportedBarSales.liquor;

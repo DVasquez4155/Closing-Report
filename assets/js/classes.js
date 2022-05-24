@@ -39,7 +39,7 @@ class sales{
         this.bar = vals.bar;
     }
     barTips() {
-        return this.bar.barSales() * .10;
+        return this.bar.barSales() * .05;
     }
     chargePercent() {
         return this.chargeTip/this.tipCharge;
@@ -57,10 +57,16 @@ class sales{
         return this.totalTips() / this.totalSales();
     }
     busserTips() {
-        return this.totalTips() * .15;
+        return this.tipCharge * .021;
+    }
+    hohTips() {
+        return this.tipCharge * .006;
+    }
+    hostTips() {
+        return this.tipCharge * .003;
     }
     totalTipsPaid() {
-        return this.barTips() + this.busserTips();
+        return this.barTips() + this.busserTips() + this.hohTips() + this.hostTips();
     }
     netTips() {
         return this.totalTips() - this.totalTipsPaid()
