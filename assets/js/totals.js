@@ -16,12 +16,14 @@ var values = getValues('closeReport');
 var totalChargeTip = 0;
 var totalCashTip = 0;
 var totalTipCharge = 0;
+var totalPaidOut = 0;
 
 values.forEach(element => {
     console.log(element)
     totalChargeTip += element.chargeTip;
     totalCashTip += element.cashTips;
     totalTipCharge += element.tipCharge;
+    totalPaidOut += element.totalTipsPaidOut;
 });
 
 const us = new Intl.NumberFormat('en-US', {
@@ -66,31 +68,5 @@ function loadSummary(form) {
     form.totalPaid0.value = us.format(0);
     form.totalPaid1.value = us.format(0);
     form.totalPaid2.value = us.format(0);
-    form.totalPaid3.value = us.format(0);
-    
-    // console.log(form.chargeTip3.value)
-
+    form.totalPaid3.value = us.format(totalPaidOut);
 }
-// var cardList = $('#list')
-// $(values).each(function(i) {
-//     var date = moment(values[i].date);
-//     if ($('#' + date.format('MMM_YYYY')).length == 0) {
-//         cardList.append(
-//             '<div class="card-header">' +
-//             '<button class="btn btn-link" data-toggle="collapse" data-target="#' + date.format('MMM_YYYY') + '">' +
-//             date.format('MMMM YYYY') +
-//             '</button>' +
-//             '</div>')
-//         .append(
-//             '<div id="' + date.format('MMM_YYYY') + '" class="collapse">' +
-//             '<ul id="' + date.format('MMM_YYYY') + 'ul" class="list-group">' +
-//             '</ul>' +
-//             '</div>')
-//     }
-//     // if ($('#' + date.format('MMM_YYYY')))
-//     var list = document.createElement('li');
-//     $(list)
-//     .addClass('list-group-item')
-//     .html('<a href="form.html#' + i + '">' + date.format('M/DD/YYYY') + "</a>")
-//     .appendTo($('#' + date.format('MMM_YYYY') + 'ul'));
-// })

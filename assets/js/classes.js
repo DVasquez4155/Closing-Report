@@ -37,7 +37,7 @@ class sales{
         this.chargeTip = isCorrect(vals.chargeTip);
         // this.otherSales = isCorrect(vals.otherSales);
         this.cashTips = isCorrect(vals.cashTips);
-        this.netChargeTips = isCorrect(vals.netChargeTips);
+        this.netTotalTips = isCorrect(vals.netTotalTips);
         this.totalTipsPercent = isCorrect(vals.totalTipsPercent);
         this.totalTipsPaidOut = isCorrect(vals.totalTipsPaidOut);
         this.bar = vals.bar;

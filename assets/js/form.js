@@ -57,9 +57,14 @@ function loadShift(calc) {
         day: parseInt(date[2]),
         shift:  parseInt(calc.shift.value),
         tipCharge:  calc.tipCharge.value,
-        chargeTip:  calc.chargeTip.value,
         // otherSales:  calc.otherSales.value,
+        chargeTip:  calc.chargeTip.value,
         cashTips:  calc.cashTips.value,
+        netTotalTips:  calc.chargeTip.value + calc.cashTips.value,
+        totalTipsPercent:  0,
+
+        totalTipsPaidOut:  calc.barTips.value + calc.busserTips.value + calc.hohTips.value + calc.hostTips.value,
+        
         bar:  currentBarSales
     })
     calculator(currentSales, calc)
