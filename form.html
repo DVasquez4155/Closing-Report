@@ -14,17 +14,10 @@
         <h1 class="text-center">Close Report</h1>
         <form name="calculator" class='align-items-center'>
             <div class="row form-group">
-                <div class=" col">
+                <!-- <div class=" col">
                     <label>Name</label>
                     <input required name="name" type="text" class="form-control" placeholder="Name">
-                </div>
-                <div class="col">
-                    <label>Station</label>
-                    <input required name="station" type="number" class="form-control" placeholder="Station" min="0"
-                        max="13">
-                </div>
-            </div>
-            <div class="row form-group">
+                </div> -->
                 <div class="col">
                     <label>Date</label>
                     <input required name="date" type="date" class="form-control" placeholder="Date">
@@ -36,10 +29,17 @@
                         <option value="1">PM</option>
                     </select>
                 </div>
+                <!-- <div class="col">
+                    <label>Station</label>
+                    <input required name="station" type="number" class="form-control" placeholder="Station" min="0"
+                        max="13">
+                </div> -->
             </div>
+            <!-- <div class="row form-group">
+            </div> -->
             <div class="row form-group">
                 <div class="col">
-                    <label>Tip Charge Sales</label>
+                    <label>Total Sales</label>
                     <input required name="tipCharge" type="number" class="form-control" min="0" step=".01"
                         placeholder="$0.00">
                 </div>
@@ -51,11 +51,12 @@
                         placeholder="$0.00">
                 </div>
                 <div class="col">
-                    <label>Charge Percentage</label>
-                    <input name="chargePercent" disabled class="form-control" placeholder="0.00%">
+                    <label>Cash Tips</label>
+                    <input required name="cashTips" type="number" class="form-control" min="0" step=".01"
+                        placeholder="$0.00">
                 </div>
             </div>
-            <div class="row form-group">
+            <!-- <div class="row form-group">
                 <div class="col">
                     <label>Other Sales</label>
                     <input required name="otherSales" type="number" class="form-control" min="0" step=".01"
@@ -72,13 +73,13 @@
                     <label>Cash Percentage</label>
                     <input disabled name="cashPercent" class="form-control" placeholder="0.00%">
                 </div>
-            </div>
-            <div class="row form-group">
+            </div> -->
+            <!-- <div class="row form-group">
                 <div class="col">
                     <label>Total Sales</label>
                     <input name="totalSales" class="form-control" disabled placeholder="$0.00">
                 </div>
-            </div>
+            </div> -->
             <div class="row form-group">
                 <div class="col">
                     <label>Total tips</label>
@@ -91,22 +92,36 @@
             </div>
             <div class="row form-group">
                 <div class="col">
+                    <label>Bar Sales</label>
                     <button type="button" class="btn btn btn-primary form-control" data-toggle="modal"
                         data-target="#bar">
                         Bar Sales
                     </button>
-                    <input disabled name="barSales" class="form-control"
-                        placeholder="$0.00">
                 </div>
                 <div class="col">
-                    <label>Bar Tips</label>
-                    <input name="barTips" disabled class="form-control" placeholder="$0.00">
+                    <label>&nbsp;</label>
+                    <input disabled name="barSales" class="form-control"
+                        placeholder="$0.00">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <label>Busser Tips</label>
+                    <label>Bar Tips (5%)</label>
+                    <input name="barTips" disabled class="form-control" placeholder="$0.00">
+                </div>
+                <div class="col">
+                    <label>Busser Tips (2.1%)</label>
                     <input name='busserTips' disabled class="form-control" placeholder="$0.00">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col">
+                    <label>HOH Tips (.6%)</label>
+                    <input name='hohTips' disabled class="form-control" placeholder="$0.00">
+                </div>
+                <div class="col">
+                    <label>Host Tips (.3%)</label>
+                    <input name='hostTips' disabled class="form-control" placeholder="$0.00">
                 </div>
             </div>
             <div class="row form-group">
@@ -117,8 +132,12 @@
             </div>
             <div class="row form-group">
                 <div class="col">
-                    <label>Net Tips for shift</label>
-                    <input name="netTips" disabled class="form-control" placeholder="$0.00">
+                    <label>Net Charge Tips for shift</label>
+                    <input name="netChargeTips" disabled class="form-control" placeholder="$0.00">
+                </div>
+                <div class="col">
+                    <label>Net Cash Tips for shift</label>
+                    <input name="netCashTips" disabled class="form-control" placeholder="$0.00">
                 </div>
             </div>
             <div class="row form-group">
@@ -153,28 +172,28 @@
                         </div>
                         <div class="row form-group">
                             <div class="col">
-                                <label>Beer Bottle</label>
-                                <input name="beerBtl" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
+                                <label>Wine</label>
+                                <input name="wine" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col">
-                                <label>Beer Keg</label>
+                                <label>Draft</label>
                                 <input name="beerKeg" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col">
-                                <label>Wine Corked ($1 for each Wine Bottle)</label>
-                                <input name="wineCorked" type="number" class="form-control" placeholder="0" min="0" step=".01">
+                                <label>Bottle</label>
+                                <input name="beerBtl" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <!-- <div class="row form-group">
                             <div class="col">
-                                <label>Wine Glass</label>
-                                <input name="wineGlass" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
+                                <label>Wine Corked</label>
+                                <input name="wineCorked" type="number" class="form-control" placeholder="$0.00" min="0" step=".01">
                             </div>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
                 <div class="modal-footer">
