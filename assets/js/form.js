@@ -81,8 +81,9 @@ var bar = document.bar;
 var hash = parseInt(location.hash.substring(1));
 function fill(shiftNumber){
     var shift = values[shiftNumber];
-    report.name.value = shift.name;
-    report.station.value = shift.station;
+    console.log(shift)
+    // report.name.value = shift.name;
+    // report.station.value = shift.station;
     report.date.value = shift.date;
     report.shift.value = shift.shift;
     report.tipCharge.value = shift.tipCharge;
@@ -93,7 +94,7 @@ function fill(shiftNumber){
     bar.liquor.value = reportedBarSales.liquor;
     bar.beerBtl.value = reportedBarSales.beerBtl;
     bar.beerKeg.value = reportedBarSales.beerKeg;
-    bar.wineCorked.value = reportedBarSales.wineCorked;
+    // bar.wineCorked.value = reportedBarSales.wineCorked;
     bar.wineGlass.value = reportedBarSales.wineGlass;
     loadShift(report)
 }
