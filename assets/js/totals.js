@@ -119,28 +119,28 @@ function loadSummary(form) {
     $('#last').text(timeRanges[form.summary.value][2])
     $('#total').text(timeRanges[form.summary.value][3])
 
-    form.chargeTip0.value = us.format(summaries[0].serverTips.chargeTips);
-    form.chargeTip1.value = us.format(summaries[1].serverTips.chargeTips);
-    form.chargeTip2.value = us.format(summaries[2].serverTips.chargeTips);
-    form.chargeTip3.value = us.format(totalChargeTip);
+    form.chargeTip0.value = us.format(summaries[0].serverTips.chargeTips || 0);
+    form.chargeTip1.value = us.format(summaries[1].serverTips.chargeTips || 0);
+    form.chargeTip2.value = us.format(summaries[2].serverTips.chargeTips || 0);
+    form.chargeTip3.value = us.format(totalChargeTip || 0);
 
-    form.cashTip0.value = us.format(summaries[0].serverTips.cashTips);
-    form.cashTip1.value = us.format(summaries[1].serverTips.cashTips);
-    form.cashTip2.value = us.format(summaries[2].serverTips.cashTips);
-    form.cashTip3.value = us.format(totalCashTip);
+    form.cashTip0.value = us.format(summaries[0].serverTips.cashTips || 0);
+    form.cashTip1.value = us.format(summaries[1].serverTips.cashTips || 0);
+    form.cashTip2.value = us.format(summaries[2].serverTips.cashTips || 0);
+    form.cashTip3.value = us.format(totalCashTip) || 0;
 
-    form.totalTip0.value = us.format(summaries[0].serverTips.totalTips);
-    form.totalTip1.value = us.format(summaries[1].serverTips.totalTips);
-    form.totalTip2.value = us.format(summaries[2].serverTips.totalTips);
-    form.totalTip3.value = us.format(totalChargeTip + totalCashTip);
+    form.totalTip0.value = us.format(summaries[0].serverTips.totalTips || 0);
+    form.totalTip1.value = us.format(summaries[1].serverTips.totalTips || 0);
+    form.totalTip2.value = us.format(summaries[2].serverTips.totalTips || 0);
+    form.totalTip3.value = us.format((totalChargeTip + totalCashTip) || 0);
 
     form.tipPercent0.value = percent.format(summaries[0].serverTips.totalTipsPercent || 0);
     form.tipPercent1.value = percent.format(summaries[1].serverTips.totalTipsPercent || 0);
     form.tipPercent2.value = percent.format(summaries[2].serverTips.totalTipsPercent || 0);
     form.tipPercent3.value = percent.format(totalTipsPercent / 100);
 
-    form.totalPaid0.value = us.format(summaries[0].paidTips.total);
-    form.totalPaid1.value = us.format(summaries[1].paidTips.total);
-    form.totalPaid2.value = us.format(summaries[2].paidTips.total);
-    form.totalPaid3.value = us.format(totalPaidOut);
+    form.totalPaid0.value = us.format(summaries[0].paidTips.total) || 0;
+    form.totalPaid1.value = us.format(summaries[1].paidTips.total) || 0;
+    form.totalPaid2.value = us.format(summaries[2].paidTips.total || 0);
+    form.totalPaid3.value = us.format(totalPaidOut || 0);
 }
