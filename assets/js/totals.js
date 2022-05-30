@@ -2,7 +2,7 @@ $('#new').on('click', function () {
     window.location.href = 'form.html';
 });
 $('#return').on('click', function () {
-    window.location.href = './';
+    window.location.href = 'index.html';
 });
 const timeRanges = {
     daily: ["Current Shift", 'Previous Shift', "Two Shifts Ago"],

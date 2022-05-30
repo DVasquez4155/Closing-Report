@@ -14,7 +14,7 @@ $('#save').click(function() {
         return;
     }
     addValue('closeReport',currentSales)
-    window.location.href = './';
+    window.location.href = 'index.html';
 })
 const us = new Intl.NumberFormat('en-US', {
     style: 'currency',
