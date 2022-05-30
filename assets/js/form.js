@@ -105,7 +105,7 @@ function calculator(currentShift,form) {
 }
 
 $('#return').on('click', function(e) {
-    window.location.href = '/';
+    window.location.href = 'index.html';
 })
 
 var report = document.calculator;
