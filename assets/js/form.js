@@ -14,7 +14,7 @@ $('#save').click(function() {
         return;
     }
     addValue('closeReport',currentSales)
-    window.location.href = 'index.html';
+    window.location.href = '/';
 })
 const us = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -41,15 +41,15 @@ function loadShift(calc) {
         beerBtl : bar.beerBtl.value,
         beerKeg : bar.beerKeg.value,
         // wineCorked : bar.wineCorked.value,
-        wine : bar.wine.value
+        wine : bar.wine.value,
+        // total : bar.barTotal.value
     });
     var date = [0,0,0];
     date = calc.date.value.split("-")
-
-
     currentSales = new sales({
         // name :  calc.name.value,
         // station:  calc.station.value,
+        bar:  currentBarSales,
         date:  calc.date.value,
         
         year: parseInt(date[0]),
@@ -60,23 +60,28 @@ function loadShift(calc) {
         // otherSales:  calc.otherSales.value,
         chargeTip:  calc.chargeTip.value,
         cashTips:  calc.cashTips.value,
-        netTotalTips:  calc.chargeTip.value + calc.cashTips.value,
-        totalTipsPercent:  0,
-
-        totalTipsPaidOut:  calc.barTips.value + calc.busserTips.value + calc.hohTips.value + calc.hostTips.value,
-        
-        bar:  currentBarSales
     })
     calculator(currentSales, calc)
 }
 function calculator(currentShift,form) {
     console.log(currentShift)
+    
+
+    currentShift.serverTips = {
+        chargeTips: parseFloat(form.chargeTip.value),
+        cashTips: parseFloat(form.cashTips.value),
+        totalTips: parseFloat(form.chargeTip.value) + parseFloat(form.cashTips.value),
+
+        totalTipsPercent: (form.chargeTip.value + form.cashTips.value)/form.tipCharge.value,
+    }
+    // var bar = document.bar;
     // form.chargePercent.value = percent.format(currentShift.chargePercent());
     // form.cashPercent.value = percent.format(currentShift.cashPercent());
     // form.totalSales.value = us.format(currentShift.totalSales());
     form.totalTips.value = us.format(currentShift.totalTips());
     form.totalPercent.value = percent.format(currentShift.totalPercent());
     form.barSales.value = us.format(currentShift.bar.barSales());
+    // bar.barTotal.value = form.barSales.value
     form.barTips.value = us.format(currentShift.barTips());
     form.busserTips.value = us.format(currentShift.busserTips());
     form.hohTips.value = us.format(currentShift.hohTips());
@@ -84,10 +89,23 @@ function calculator(currentShift,form) {
     form.totalTipsPaid.value = us.format(currentShift.totalTipsPaid());
     form.netChargeTips.value = us.format(currentShift.netTips()-currentShift.cashTips);
     form.netCashTips.value = us.format(currentShift.cashTips);
+    currentShift.paidTips = {
+        bar: currentShift.barTips(),
+        busser: currentShift.busserTips(),
+        hoh: currentShift.hohTips(),
+        host: currentShift.hostTips(),
+        total: 
+        currentShift.barTips() + 
+        currentShift.busserTips() + 
+        currentShift.hohTips() + 
+        currentShift.hostTips()
+    }
+    
+    currentSales = currentShift;
 }
 
 $('#return').on('click', function(e) {
-    window.location.href = 'index.html';
+    window.location.href = '/';
 })
 
 var report = document.calculator;

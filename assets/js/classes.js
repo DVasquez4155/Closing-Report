@@ -12,6 +12,10 @@ class barSales {
         this.beerBtl = isCorrect(vals.beerBtl);
         this.beerKeg = isCorrect(vals.beerKeg);
         this.wine = isCorrect(vals.wine);
+        this.total = isCorrect(vals.liquor) + 
+        isCorrect(vals.beerBtl) + 
+        isCorrect(vals.beerKeg) + 
+        isCorrect(vals.wine);
         return this;
     }
     barSales() {
@@ -38,8 +42,6 @@ class sales{
         // this.otherSales = isCorrect(vals.otherSales);
         this.cashTips = isCorrect(vals.cashTips);
         this.netTotalTips = isCorrect(vals.netTotalTips);
-        this.totalTipsPercent = isCorrect(vals.totalTipsPercent);
-        this.totalTipsPaidOut = isCorrect(vals.totalTipsPaidOut);
         this.bar = vals.bar;
     }
     barTips() {

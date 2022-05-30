@@ -2,7 +2,7 @@ $('#new').on('click', function() {
     window.location.href = 'form.html';
 });
 $('#return').on('click', function() {
-    window.location.href = 'index.html';
+    window.location.href = '/';
 });
 const timeRanges = {
     daily : ["Current Shift", 'Previous Shift', "Two Shifts Ago"],
@@ -20,11 +20,13 @@ var totalPaidOut = 0;
 
 values.forEach(element => {
     console.log(element)
-    totalChargeTip += element.chargeTip;
-    totalCashTip += element.cashTips;
-    totalTipCharge += element.tipCharge;
-    totalPaidOut += element.totalTipsPaidOut;
+    totalChargeTip += element.serverTips.chargeTips;
+    totalCashTip += element.serverTips.cashTips;
+    totalTipCharge += element.serverTips.totalTips;
+    totalPaidOut += element.paidTips.total;
 });
+totalTipCharge = totalTipCharge/values.length
+
 
 const us = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -63,7 +65,7 @@ function loadSummary(form) {
     form.tipPercent0.value = percent.format(0);
     form.tipPercent1.value = percent.format(0);
     form.tipPercent2.value = percent.format(0);
-    form.tipPercent3.value = percent.format((totalChargeTip + totalCashTip)/totalTipCharge);
+    form.tipPercent3.value = percent.format(totalTipCharge/100);
     
     form.totalPaid0.value = us.format(0);
     form.totalPaid1.value = us.format(0);
