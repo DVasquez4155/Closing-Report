@@ -38,7 +38,7 @@ const percent = new Intl.NumberFormat('en-US', {
 $(document.totals).on('change', function (e) {
     loadSummary(this)
 })
-
+console.log(values)
 function addUpSummaries(summaries) {
     var totalSummaryChargeTip = 0;
     var totalSummaryCashTip = 0;
